@@ -1,0 +1,196 @@
+function(t, state, parameters) {
+	
+
+with(as.list(c(state, parameters)),{
+		
+
+# Input Nodes
+		
+w_STAT1 = (((IFNG)))*(1-((((((SOCS1)+(SOCS3)-(SOCS1)*(SOCS3))+(STAT6)-((SOCS1)+(SOCS3)-(SOCS1)*(SOCS3))*(STAT6))+(STAT3)-(((SOCS1)+(SOCS3)-(SOCS1)*(SOCS3))+(STAT6)-((SOCS1)+(SOCS3)-(SOCS1)*(SOCS3))*(STAT6))*(STAT3)))*(1-STAT1)))
+		
+
+w_STAT5 = (GMCSF)*(1-((STAT3)+(((SOCS1)*(1-STAT5)))-(STAT3)*(((SOCS1)*(1-STAT5)))))
+		
+
+w_FCGR = ((IgG)+(((IgG)*(HMGB)))-(IgG)*(((IgG)*(HMGB))))+(((IgG)*(IL1B)))-((IgG)+(((IgG)*(HMGB)))-(IgG)*(((IgG)*(HMGB))))*(((IgG)*(IL1B)))
+		
+
+w_NFKB = ((((((IL1B)+(TLR4)-(IL1B)*(TLR4))+(FCGR)-((IL1B)+(TLR4)-(IL1B)*(TLR4))*(FCGR))+(GMCSF)-(((IL1B)+(TLR4)-(IL1B)*(TLR4))+(FCGR)-((IL1B)+(TLR4)-(IL1B)*(TLR4))*(FCGR))*(GMCSF))+(TNFa)-((((IL1B)+(TLR4)-(IL1B)*(TLR4))+(FCGR)-((IL1B)+(TLR4)-(IL1B)*(TLR4))*(FCGR))+(GMCSF)-(((IL1B)+(TLR4)-(IL1B)*(TLR4))+(FCGR)-((IL1B)+(TLR4)-(IL1B)*(TLR4))*(FCGR))*(GMCSF))*(TNFa)))*(1-(((((PPARG)+(STAT3)-(PPARG)*(STAT3))+(KLF4)-((PPARG)+(STAT3)-(PPARG)*(STAT3))*(KLF4))+(HIF1a)-(((PPARG)+(STAT3)-(PPARG)*(STAT3))+(KLF4)-((PPARG)+(STAT3)-(PPARG)*(STAT3))*(KLF4))*(HIF1a))+(STAT6)-((((PPARG)+(STAT3)-(PPARG)*(STAT3))+(KLF4)-((PPARG)+(STAT3)-(PPARG)*(STAT3))*(KLF4))+(HIF1a)-(((PPARG)+(STAT3)-(PPARG)*(STAT3))+(KLF4)-((PPARG)+(STAT3)-(PPARG)*(STAT3))*(KLF4))*(HIF1a))*(STAT6)))
+		
+
+w_TLR4 = (HMGB)*(1-((FCGR)+(GCGCR)-(FCGR)*(GCGCR)))
+		
+
+w_KLF4 = (STAT6)
+		
+
+w_STAT6 = ((((IL4)+(TGFB)-(IL4)*(TGFB))+(HIF1a)-((IL4)+(TGFB)-(IL4)*(TGFB))*(HIF1a)))*(1-((((SOCS1)+(STAT1)-(SOCS1)*(STAT1)))*(1-STAT6)))
+		
+
+w_SOCS1 = ((STAT1)+(STAT5)-(STAT1)*(STAT5))+(STAT6)-((STAT1)+(STAT5)-(STAT1)*(STAT5))*(STAT6)
+		
+
+w_PPARG = (STAT6)
+		
+
+w_STAT3 = ((((IL6)+(IL10)-(IL6)*(IL10))+(MCSF)-((IL6)+(IL10)-(IL6)*(IL10))*(MCSF)))*(1-((((FCGR)+(IFNG)-(FCGR)*(IFNG))+(NFKB)-((FCGR)+(IFNG)-(FCGR)*(IFNG))*(NFKB))+(STAT1)-(((FCGR)+(IFNG)-(FCGR)*(IFNG))+(NFKB)-((FCGR)+(IFNG)-(FCGR)*(IFNG))*(NFKB))*(STAT1)))
+		
+
+w_SOCS3 = (((STAT1)+(STAT6)-(STAT1)*(STAT6)))*(1-EGF)
+
+
+w_HIF1a = (((Hipoxia)+(TGFB)-(Hipoxia)*(TGFB))+(A2a)-((Hipoxia)+(TGFB)-(Hipoxia)*(TGFB))*(A2a))+(((TLR4)*(A2a)))-(((Hipoxia)+(TGFB)-(Hipoxia)*(TGFB))+(A2a)-((Hipoxia)+(TGFB)-(Hipoxia)*(TGFB))*(A2a))*(((TLR4)*(A2a)))
+		
+
+w_AP1 = ((((IL6)+(GMCSF)-(IL6)*(GMCSF))+(TNFa)-((IL6)+(GMCSF)-(IL6)*(GMCSF))*(TNFa)))*(1-((STAT6)+(IgG)-(STAT6)*(IgG)))
+		
+
+w_ERK = (FCGR)
+
+
+w_IL6 = ((IL6)*(1-SOCS3))*(NFKB)
+		
+
+w_IL10 = (IL10)*(1-ERK)
+		
+
+w_IFNG = (IFNG)
+		
+
+w_GMCSF = (GMCSF)
+		
+
+w_IL1B = (IL1B)
+		
+
+w_IgG = (IgG)
+		
+
+w_HMGB = (HMGB)
+		
+
+w_EGF = (EGF)
+		
+
+w_IL4 = (IL4)
+		
+
+w_Hipoxia = (Hipoxia)
+		
+
+w_A2a = (A2a)
+		
+
+w_MCSF = (MCSF)
+		
+
+w_TNFa = (TNFa)*(1-A2a)
+		
+
+w_TGFB = (TGFB)
+		
+
+w_GCGCR = (GCGCR)
+
+
+		
+
+# Rates of Change
+		
+
+dSTAT1 = 1/(1+(exp(-2*h*(w_STAT1-b)))) - (alphaSTAT1*STAT1)
+		
+
+dSTAT5 = 1/(1+(exp(-2*h*(w_STAT5-b)))) - (alphaSTAT5*STAT5)
+		
+
+dFCGR = 1/(1+(exp(-2*h*(w_FCGR-b)))) - (alphaFCGR*FCGR)
+		
+
+dNFKB = 1/(1+(exp(-2*h*(w_NFKB-b)))) - (alphaNFKB*NFKB)
+		
+
+dTLR4 = 1/(1+(exp(-2*h*(w_TLR4-b)))) - (alphaTLR4*TLR4)
+		
+
+dKLF4 = 1/(1+(exp(-2*h*(w_KLF4-b)))) - (alphaKLF4*KLF4)
+		
+
+dSTAT6 = 1/(1+(exp(-2*h*(w_STAT6-b)))) - (alphaSTAT6*STAT6)
+		
+
+dSOCS1 = 1/(1+(exp(-2*h*(w_SOCS1-b)))) - (alphaSOCS1*SOCS1)
+		
+
+dPPARG = 1/(1+(exp(-2*h*(w_PPARG-b)))) - (alphaPPARG*PPARG)
+		
+
+dSTAT3 = 1/(1+(exp(-2*h*(w_STAT3-b)))) - (alphaSTAT3*STAT3)
+		
+
+dSOCS3 = 1/(1+(exp(-2*h*(w_SOCS3-b)))) - (alphaSOCS3*SOCS3)
+
+
+dHIF1a = 1/(1+(exp(-2*h*(w_HIF1a-b)))) - (alphaHIF1a*HIF1a)
+
+
+dAP1 = 1/(1+(exp(-2*h*(w_AP1-b)))) - (alphaAP1*AP1)
+		
+
+dERK = 1/(1+(exp(-2*h*(w_ERK-b)))) - (alphaERK*ERK)
+		
+
+dIL6 = 1/(1+(exp(-2*h*(w_IL6-b)))) - (alphaIL6*IL6)
+		
+
+dIL10 = 1/(1+(exp(-2*h*(w_IL10-b)))) - (alphaIL10*IL10)
+		
+
+dIFNG = 1/(1+(exp(-2*h*(w_IFNG-b)))) - (alphaIFNG*IFNG)
+		
+
+dGMCSF = 1/(1+(exp(-2*h*(w_GMCSF-b)))) - (alphaGMCSF*GMCSF)
+		
+
+dIL1B = 1/(1+(exp(-2*h*(w_IL1B-b)))) - (alphaIL1B*IL1B)
+		
+
+dIgG = 1/(1+(exp(-2*h*(w_IgG-b)))) - (alphaIgG*IgG)
+		
+
+dHMGB = 1/(1+(exp(-2*h*(w_HMGB-b)))) - (alphaHMGB*HMGB)
+		
+
+dEGF = 1/(1+(exp(-2*h*(w_EGF-b)))) - (alphaEGF*EGF)
+		
+
+dIL4 = 1/(1+(exp(-2*h*(w_IL4-b)))) - (alphaIL4*IL4)
+		
+
+dHipoxia = 1/(1+(exp(-2*h*(w_Hipoxia-b)))) - (alphaHipoxia*Hipoxia)
+		
+
+dA2a = 1/(1+(exp(-2*h*(w_A2a-b)))) - (alphaA2a*A2a)
+		
+
+dMCSF = 1/(1+(exp(-2*h*(w_MCSF-b)))) - (alphaMCSF*MCSF)
+		
+
+dTNFa = 1/(1+(exp(-2*h*(w_TNFa-b)))) - (alphaTNFa*TNFa)
+		
+
+dTGFB = 1/(1+(exp(-2*h*(w_TGFB-b)))) - (alphaTGFB*TGFB)
+		
+
+dGCGCR = 1/(1+(exp(-2*h*(w_GCGCR-b)))) - (alphaGCGCR*GCGCR)
+
+
+		
+
+list(c(dSTAT1,dSTAT5,dFCGR,dNFKB,dTLR4,dKLF4,dSTAT6,dSOCS1,dPPARG,dSTAT3,dSOCS3,dIL6,dIL10,dIFNG,dGMCSF,dIL1B,dIgG,dHMGB,dEGF,dIL4,dHIF1a,dHipoxia,dA2a,dMCSF,dAP1,dERK,dTNFa,dTGFB,dGCGCR))
+	
+
+})
+
+
+}

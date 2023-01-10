@@ -1,0 +1,126 @@
+MacrophageTGEM<-function(t, state, parameters) {
+	with(as.list(c(state, parameters)),{
+		# Input Nodes
+
+w_STAT3 = ((((((((IL10)+(A2a)-(IL10)*(A2a))+(IL10e)-((IL10)+(A2a)-(IL10)*(A2a))*(IL10e))+((((IL6e)*(IL4e))*(1-IFNG)))-(((IL10)+(A2a)-(IL10)*(A2a))+(IL10e)-((IL10)+(A2a)-(IL10)*(A2a))*(IL10e))*((((IL6e)*(IL4e))*(1-IFNG))))+(MCSF)-((((IL10)+(A2a)-(IL10)*(A2a))+(IL10e)-((IL10)+(A2a)-(IL10)*(A2a))*(IL10e))+((((IL6e)*(IL4e))*(1-IFNG)))-(((IL10)+(A2a)-(IL10)*(A2a))+(IL10e)-((IL10)+(A2a)-(IL10)*(A2a))*(IL10e))*((((IL6e)*(IL4e))*(1-IFNG))))*(MCSF)))*(1-((((((SOCS3)+(IFNG)-(SOCS3)*(IFNG))+(IFNB)-((SOCS3)+(IFNG)-(SOCS3)*(IFNG))*(IFNB))+(NFKB)-(((SOCS3)+(IFNG)-(SOCS3)*(IFNG))+(IFNB)-((SOCS3)+(IFNG)-(SOCS3)*(IFNG))*(IFNB))*(NFKB))+(GMCSF)-((((SOCS3)+(IFNG)-(SOCS3)*(IFNG))+(IFNB)-((SOCS3)+(IFNG)-(SOCS3)*(IFNG))*(IFNB))+(NFKB)-(((SOCS3)+(IFNG)-(SOCS3)*(IFNG))+(IFNB)-((SOCS3)+(IFNG)-(SOCS3)*(IFNG))*(IFNB))*(NFKB))*(GMCSF))+(IgG)-(((((SOCS3)+(IFNG)-(SOCS3)*(IFNG))+(IFNB)-((SOCS3)+(IFNG)-(SOCS3)*(IFNG))*(IFNB))+(NFKB)-(((SOCS3)+(IFNG)-(SOCS3)*(IFNG))+(IFNB)-((SOCS3)+(IFNG)-(SOCS3)*(IFNG))*(IFNB))*(NFKB))+(GMCSF)-((((SOCS3)+(IFNG)-(SOCS3)*(IFNG))+(IFNB)-((SOCS3)+(IFNG)-(SOCS3)*(IFNG))*(IFNB))+(NFKB)-(((SOCS3)+(IFNG)-(SOCS3)*(IFNG))+(IFNB)-((SOCS3)+(IFNG)-(SOCS3)*(IFNG))*(IFNB))*(NFKB))*(GMCSF))*(IgG)))))
+
+w_SMAD23 = (((((TGFBe)+(TGFB)-(TGFBe)*(TGFB)))*(1-((IFNG)+(SOCS3)-(IFNG)*(SOCS3)))))
+
+w_STAT6 = ((((IL4e)+(SMAD23)-(IL4e)*(SMAD23))+(HIF1A)-((IL4e)+(SMAD23)-(IL4e)*(SMAD23))*(HIF1A)))*(1-(((STAT1)+(TNFA)-(STAT1)*(TNFA))+(TNFAe)-((STAT1)+(TNFA)-(STAT1)*(TNFA))*(TNFAe)))
+
+w_SOCS1 = (((STAT6)+(IgG)-(STAT6)*(IgG)))
+
+w_TLR4 = (((TLR4)*(1-((IgG)+(GCGCR)-(IgG)*(GCGCR)))))
+
+w_NFKB = (1)
+
+w_STAT1 = ((((IFNB)+(IFNG)-(IFNB)*(IFNG))+(((IL6e)*(IFNG)))-((IFNB)+(IFNG)-(IFNB)*(IFNG))*(((IL6e)*(IFNG)))))*(1-((((STAT3)+(SOCS1)-(STAT3)*(SOCS1))+(STAT6)-((STAT3)+(SOCS1)-(STAT3)*(SOCS1))*(STAT6))+(IgG)-(((STAT3)+(SOCS1)-(STAT3)*(SOCS1))+(STAT6)-((STAT3)+(SOCS1)-(STAT3)*(SOCS1))*(STAT6))*(IgG)))
+
+w_SOCS3 = (STAT1)
+
+w_AP1 = ((((((((GMCSF)+(TNFAe)-(GMCSF)*(TNFAe))+(TNFA)-((GMCSF)+(TNFAe)-(GMCSF)*(TNFAe))*(TNFA))+(IL6e)-(((GMCSF)+(TNFAe)-(GMCSF)*(TNFAe))+(TNFA)-((GMCSF)+(TNFAe)-(GMCSF)*(TNFAe))*(TNFA))*(IL6e))+(IL1B)-((((GMCSF)+(TNFAe)-(GMCSF)*(TNFAe))+(TNFA)-((GMCSF)+(TNFAe)-(GMCSF)*(TNFAe))*(TNFA))+(IL6e)-(((GMCSF)+(TNFAe)-(GMCSF)*(TNFAe))+(TNFA)-((GMCSF)+(TNFAe)-(GMCSF)*(TNFAe))*(TNFA))*(IL6e))*(IL1B)))*(1-((GCGCR)+(STAT6)-(GCGCR)*(STAT6)))))
+
+w_IL10 = (((((((IL10e)+(((IL4e)*(STAT6)))-(IL10e)*(((IL4e)*(STAT6))))+(((STAT3)*(IL6e)))-((IL10e)+(((IL4e)*(STAT6)))-(IL10e)*(((IL4e)*(STAT6))))*(((STAT3)*(IL6e))))+(((TLR4)*(A2a)))-(((IL10e)+(((IL4e)*(STAT6)))-(IL10e)*(((IL4e)*(STAT6))))+(((STAT3)*(IL6e)))-((IL10e)+(((IL4e)*(STAT6)))-(IL10e)*(((IL4e)*(STAT6))))*(((STAT3)*(IL6e))))*(((TLR4)*(A2a))))+(MCSF)-((((IL10e)+(((IL4e)*(STAT6)))-(IL10e)*(((IL4e)*(STAT6))))+(((STAT3)*(IL6e)))-((IL10e)+(((IL4e)*(STAT6)))-(IL10e)*(((IL4e)*(STAT6))))*(((STAT3)*(IL6e))))+(((TLR4)*(A2a)))-(((IL10e)+(((IL4e)*(STAT6)))-(IL10e)*(((IL4e)*(STAT6))))+(((STAT3)*(IL6e)))-((IL10e)+(((IL4e)*(STAT6)))-(IL10e)*(((IL4e)*(STAT6))))*(((STAT3)*(IL6e))))*(((TLR4)*(A2a))))*(MCSF))+(ERK)-(((((IL10e)+(((IL4e)*(STAT6)))-(IL10e)*(((IL4e)*(STAT6))))+(((STAT3)*(IL6e)))-((IL10e)+(((IL4e)*(STAT6)))-(IL10e)*(((IL4e)*(STAT6))))*(((STAT3)*(IL6e))))+(((TLR4)*(A2a)))-(((IL10e)+(((IL4e)*(STAT6)))-(IL10e)*(((IL4e)*(STAT6))))+(((STAT3)*(IL6e)))-((IL10e)+(((IL4e)*(STAT6)))-(IL10e)*(((IL4e)*(STAT6))))*(((STAT3)*(IL6e))))*(((TLR4)*(A2a))))+(MCSF)-((((IL10e)+(((IL4e)*(STAT6)))-(IL10e)*(((IL4e)*(STAT6))))+(((STAT3)*(IL6e)))-((IL10e)+(((IL4e)*(STAT6)))-(IL10e)*(((IL4e)*(STAT6))))*(((STAT3)*(IL6e))))+(((TLR4)*(A2a)))-(((IL10e)+(((IL4e)*(STAT6)))-(IL10e)*(((IL4e)*(STAT6))))+(((STAT3)*(IL6e)))-((IL10e)+(((IL4e)*(STAT6)))-(IL10e)*(((IL4e)*(STAT6))))*(((STAT3)*(IL6e))))*(((TLR4)*(A2a))))*(MCSF))*(ERK)))*(1-(((((((STAT1)+(NFKB)-(STAT1)*(NFKB))+(SOCS3)-((STAT1)+(NFKB)-(STAT1)*(NFKB))*(SOCS3))+(IFNG)-(((STAT1)+(NFKB)-(STAT1)*(NFKB))+(SOCS3)-((STAT1)+(NFKB)-(STAT1)*(NFKB))*(SOCS3))*(IFNG))+(IFNB)-((((STAT1)+(NFKB)-(STAT1)*(NFKB))+(SOCS3)-((STAT1)+(NFKB)-(STAT1)*(NFKB))*(SOCS3))+(IFNG)-(((STAT1)+(NFKB)-(STAT1)*(NFKB))+(SOCS3)-((STAT1)+(NFKB)-(STAT1)*(NFKB))*(SOCS3))*(IFNG))*(IFNB))+(GMCSF)-(((((STAT1)+(NFKB)-(STAT1)*(NFKB))+(SOCS3)-((STAT1)+(NFKB)-(STAT1)*(NFKB))*(SOCS3))+(IFNG)-(((STAT1)+(NFKB)-(STAT1)*(NFKB))+(SOCS3)-((STAT1)+(NFKB)-(STAT1)*(NFKB))*(SOCS3))*(IFNG))+(IFNB)-((((STAT1)+(NFKB)-(STAT1)*(NFKB))+(SOCS3)-((STAT1)+(NFKB)-(STAT1)*(NFKB))*(SOCS3))+(IFNG)-(((STAT1)+(NFKB)-(STAT1)*(NFKB))+(SOCS3)-((STAT1)+(NFKB)-(STAT1)*(NFKB))*(SOCS3))*(IFNG))*(IFNB))*(GMCSF))+(IgG)-((((((STAT1)+(NFKB)-(STAT1)*(NFKB))+(SOCS3)-((STAT1)+(NFKB)-(STAT1)*(NFKB))*(SOCS3))+(IFNG)-(((STAT1)+(NFKB)-(STAT1)*(NFKB))+(SOCS3)-((STAT1)+(NFKB)-(STAT1)*(NFKB))*(SOCS3))*(IFNG))+(IFNB)-((((STAT1)+(NFKB)-(STAT1)*(NFKB))+(SOCS3)-((STAT1)+(NFKB)-(STAT1)*(NFKB))*(SOCS3))+(IFNG)-(((STAT1)+(NFKB)-(STAT1)*(NFKB))+(SOCS3)-((STAT1)+(NFKB)-(STAT1)*(NFKB))*(SOCS3))*(IFNG))*(IFNB))+(GMCSF)-(((((STAT1)+(NFKB)-(STAT1)*(NFKB))+(SOCS3)-((STAT1)+(NFKB)-(STAT1)*(NFKB))*(SOCS3))+(IFNG)-(((STAT1)+(NFKB)-(STAT1)*(NFKB))+(SOCS3)-((STAT1)+(NFKB)-(STAT1)*(NFKB))*(SOCS3))*(IFNG))+(IFNB)-((((STAT1)+(NFKB)-(STAT1)*(NFKB))+(SOCS3)-((STAT1)+(NFKB)-(STAT1)*(NFKB))*(SOCS3))+(IFNG)-(((STAT1)+(NFKB)-(STAT1)*(NFKB))+(SOCS3)-((STAT1)+(NFKB)-(STAT1)*(NFKB))*(SOCS3))*(IFNG))*(IFNB))*(GMCSF))*(IgG)))
+
+w_TNFA = ((((((TNFAe)+(AP1)-(TNFAe)*(AP1))+(((IL6e)*(AP1)))-((TNFAe)+(AP1)-(TNFAe)*(AP1))*(((IL6e)*(AP1))))+(((Fra1)*(AP1)))-(((TNFAe)+(AP1)-(TNFAe)*(AP1))+(((IL6e)*(AP1)))-((TNFAe)+(AP1)-(TNFAe)*(AP1))*(((IL6e)*(AP1))))*(((Fra1)*(AP1))))*(1-(((STAT1)+(NFKB)-(STAT1)*(NFKB))+(((TLR4)*(A2a)))-((STAT1)+(NFKB)-(STAT1)*(NFKB))*(((TLR4)*(A2a)))))))
+
+w_TGFB = ((((((TGFBe)+(((IL4e)*(STAT6)))-(TGFBe)*(((IL4e)*(STAT6))))+(((IL10e)*(STAT3)))-((TGFBe)+(((IL4e)*(STAT6)))-(TGFBe)*(((IL4e)*(STAT6))))*(((IL10e)*(STAT3))))+(((IL10)*(STAT3)))-(((TGFBe)+(((IL4e)*(STAT6)))-(TGFBe)*(((IL4e)*(STAT6))))+(((IL10e)*(STAT3)))-((TGFBe)+(((IL4e)*(STAT6)))-(TGFBe)*(((IL4e)*(STAT6))))*(((IL10e)*(STAT3))))*(((IL10)*(STAT3))))+(A2a)-((((TGFBe)+(((IL4e)*(STAT6)))-(TGFBe)*(((IL4e)*(STAT6))))+(((IL10e)*(STAT3)))-((TGFBe)+(((IL4e)*(STAT6)))-(TGFBe)*(((IL4e)*(STAT6))))*(((IL10e)*(STAT3))))+(((IL10)*(STAT3)))-(((TGFBe)+(((IL4e)*(STAT6)))-(TGFBe)*(((IL4e)*(STAT6))))+(((IL10e)*(STAT3)))-((TGFBe)+(((IL4e)*(STAT6)))-(TGFBe)*(((IL4e)*(STAT6))))*(((IL10e)*(STAT3))))*(((IL10)*(STAT3))))*(A2a)))*(1-((NFKB)+(STAT1)-(NFKB)*(STAT1)))
+
+w_Fra1 = (Fra1)+(TLR4)-(Fra1)*(TLR4)
+
+w_HIF1A = (0)
+
+w_ERK = (IgG)
+
+w_IL4e = (IL4e)
+
+w_IL10e = ((IL10e)+(STAT3)-(IL10e)*(STAT3))+(STAT6)-((IL10e)+(STAT3)-(IL10e)*(STAT3))*(STAT6)
+
+w_TNFAe = ((TNFAe)+(AP1)-(TNFAe)*(AP1))+(NFKB)-((TNFAe)+(AP1)-(TNFAe)*(AP1))*(NFKB)
+
+w_TGFBe = ((TGFBe)+(STAT3)-(TGFBe)*(STAT3))+(STAT6)-((TGFBe)+(STAT3)-(TGFBe)*(STAT3))*(STAT6)
+
+w_IgG = (IgG)
+
+w_A2a = (A2a)
+
+w_IFNG = (IFNG)+(STAT1)-(IFNG)*(STAT1)
+
+w_IFNB = (IFNB)+(STAT1)-(IFNB)*(STAT1)
+
+w_IL1B = ((IL1B)+(AP1)-(IL1B)*(AP1))+(NFKB)-((IL1B)+(AP1)-(IL1B)*(AP1))*(NFKB)
+
+w_IL6e = ((IL6e)+(Fra1)-(IL6e)*(Fra1))+(AP1)-((IL6e)+(Fra1)-(IL6e)*(Fra1))*(AP1)
+
+w_MCSF = (MCSF)
+
+w_GMCSF = (GMCSF)
+
+w_Hipoxia = (Hipoxia)
+
+w_GCGCR = (GCGCR)
+
+
+		# Rates of Change
+dSTAT3 = 1/(1+(exp(-h*(w_STAT3-b)))) - (alphaSTAT3*STAT3)
+
+dSMAD23 = 1/(1+(exp(-h*(w_SMAD23-b)))) - (alphaSMAD23*SMAD23)
+
+dSTAT6 = 1/(1+(exp(-h*(w_STAT6-b)))) - (alphaSTAT6*STAT6)
+
+dSOCS1 = 1/(1+(exp(-h*(w_SOCS1-b)))) - (alphaSOCS1*SOCS1)
+
+dTLR4 = 1/(1+(exp(-h*(w_TLR4-b)))) - (alphaTLR4*TLR4)
+
+dNFKB = 1/(1+(exp(-h*(w_NFKB-b)))) - (alphaNFKB*NFKB)
+
+dSTAT1 = 1/(1+(exp(-h*(w_STAT1-b)))) - (alphaSTAT1*STAT1)
+
+dSOCS3 = 1/(1+(exp(-h*(w_SOCS3-b)))) - (alphaSOCS3*SOCS3)
+
+dAP1 = 1/(1+(exp(-h*(w_AP1-b)))) - (alphaAP1*AP1)
+
+dIL10 = 1/(1+(exp(-h*(w_IL10-b)))) - (alphaIL10*IL10)
+
+dTNFA = 1/(1+(exp(-h*(w_TNFA-b)))) - (alphaTNFA*TNFA)
+
+dTGFB = 1/(1+(exp(-h*(w_TGFB-b)))) - (alphaTGFB*TGFB)
+
+dFra1 = 1/(1+(exp(-h*(w_Fra1-b)))) - (alphaFra1*Fra1)
+
+dHIF1A = 1/(1+(exp(-h*(w_HIF1A-b)))) - (alphaHIF1A*HIF1A)
+
+dERK = 1/(1+(exp(-h*(w_ERK-b)))) - (alphaERK*ERK)
+
+dIL4e = 0
+
+dIL10e = 0
+
+dTNFAe = 0
+
+dTGFBe = 0
+
+dIgG = 0
+
+dA2a = 0
+
+dIFNG = 0
+
+dIFNB = 0
+
+dIL1B = 0
+
+dIL6e = 0
+
+dMCSF = 0
+
+dGMCSF = 0
+
+dHipoxia = 0
+
+dGCGCR = 0
+
+
+list(c(dSTAT3,dSMAD23,dSTAT6,dSOCS1,dTLR4,dNFKB,dSTAT1,dSOCS3,dAP1,dIL10,dTNFA,dTGFB,dFra1,dHIF1A,dERK,dIL4e,dIL10e,dTNFAe,dTGFBe,dIgG,dA2a,dIFNG,dIFNB,dIL1B,dIL6e,dMCSF,dGMCSF,dHipoxia,dGCGCR))
+	})
+}

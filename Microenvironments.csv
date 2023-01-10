@@ -1,0 +1,6 @@
+pro-M1,IFNG,IFNB,
+pro-M1a,IL1B,TNFAe,
+pro-M2a,IL4e,TGFBe,
+pro-M2b,IgG,GCGCR,
+pro-M2c,IL10e,IL6e,MCSF
+pro-M2d,A2a,Hipoxia,GCGCR
